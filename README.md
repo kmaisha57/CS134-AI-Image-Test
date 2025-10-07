@@ -17,13 +17,17 @@ Key contributions/findings:
 
 # Methodology
 This work evaluates the privacy risks associated with publicly blurred facial imagery. The methodology is broken into three phases: data collection and preprocessing, reconstruction using AI models, and evaluation of reconstructed images. By simulating facial blurring similar to what is used in Google Street View and applying generative restoration tools to the images, this work assesses whether blurring continues to function as an effective privacy safeguard in the era of advanced AI models.
+
 Data Collection and Preprocessing
+
 The dataset draws from two sources:
 ● Google Street View imagery, scraped using the Google Maps Static API at locations where faces were blurred in the standard Street View interface.
 ● A subset of the FFHQ (Flickr-Faces-HQ) dataset, a public high-resolution facial image dataset developed by NVIDIA for benchmarking generative models (Karras et al.).
 For the Street View images, 50 stills were taken San Francisco, CA, New York, NY, Los Angeles, CA, Chicago, IL, Houston, TX, Miami, FL, Seattle, WA, Philadelphia, PA, Dallas, TX, and Pheonix, AZ. The images were manually assessed to identify instances of blurred faces, which were then cropped from the image. This resulted in an image set of 14 blurred faces.
 The FFHQ subset consisted of 300 random images from the larger dataset of 60,000 images. The images have a resolution of 1024x1024. Because this was a set of the original, unaltered images, the efficacy of the blurring and reconstruction could be assessed.
+
 Reconstruction Using AI Models
+
 To mimic the type of facial blur used in Google Street View, this work used strong Gaussian blur (kernel size: 75×75, sigma: 30) to the full FFHQ images. Though real Street View blurs are face-localized, this approach assumes a more conservative scenario by applying the blur across the entire image, ensuring the reconstructed face emerges solely from degraded visual input.
 This method approximates the anonymization used by Google, where faces are detected and then blurred to obscure identity. To simulate Google Street View–style privacy filters, I applied a multi-step Gaussian blur process. This method involves repeatedly applying Gaussian blur with varying kernel sizes and sigma values to incrementally degrade facial features while maintaining consistent image dimensions. Gaussian blur is a commonly used image processing technique that reduces image detail and noise. The Gaussian function assigns higher weights to the center pixels and progressively lower weights to those farther away, resulting in a smooth blurring effect that preserves general structure while eliminating fine details. For faces, it maintains the general shape of features while removing textures such as eyes, nose contours, or skin patterns. The result was a blurred image set that visually resembles real-world blurring techniques.
 The reconstruction method was the same for the Google Street View images and the FFHQ images and involved two stages.
