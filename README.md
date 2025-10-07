@@ -11,9 +11,13 @@ This problem is important because it speaks to the tension between data accessib
 In this work, I assess actual Google Street View images and simulate Google-style blurring on a high-resolution public dataset (FFHQ), reconstruct the faces using GFP-GAN, and assess image similarity using LPIPS, SSIM, and PSNR scores. Limitations include the lack of human validation and the inability to evaluate the Street View reconstructions.
 
 Key contributions/findings:
+
 ● Even with heavy blurring, AI models can recreate a plausible face.
+
 ● Angle, orientation, and resolution play a significant role in facial restoration.
+
 ● Image dataset collection efforts, even in the public domain, should follow some standards for enhanced trust and transparency.
+
 
 # Methodology
 This work evaluates the privacy risks associated with publicly blurred facial imagery. The methodology is broken into three phases: data collection and preprocessing, reconstruction using AI models, and evaluation of reconstructed images. By simulating facial blurring similar to what is used in Google Street View and applying generative restoration tools to the images, this work assesses whether blurring continues to function as an effective privacy safeguard in the era of advanced AI models.
